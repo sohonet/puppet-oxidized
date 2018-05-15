@@ -32,13 +32,6 @@ class oxidized::install inherits oxidized  {
           ensure => $oxidized::ensure,
         }
       }
-      elsif $::facts['puppetversion'] >= '4' {
-        $oxidized::params::gem_names.each |$gem| {
-          rvm_gem { "ruby-${oxidized::rvm_ruby_version}/${gem}":
-            ensure => $oxidized::ensure,
-          }
-        }
-      }
 
       rvm_wrapper { 'oxidized':
         ensure      => $oxidized::ensure,
