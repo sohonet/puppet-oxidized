@@ -67,7 +67,7 @@ class oxidized (
   String $service_state                                    = $oxidized::params::service_state,
   Boolean $service_enable                                  = $oxidized::params::service_enable,
   String $config_dir                                       = $oxidized::params::config_dir,
-  Stdlib::Absolutepath $pid_dir                            = $oxidized::params::pid_dir,
+  String $pid_dir                                          = $oxidized::params::pid_dir,
   String $user                                             = $oxidized::params::user,
   String $group                                            = $oxidized::params::group,
   Array[String] $devices                                   = $oxidized::params::devices,
