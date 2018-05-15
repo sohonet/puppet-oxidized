@@ -21,16 +21,15 @@ class oxidized::install inherits oxidized  {
         },
         require       => Package[$oxidized::params::dependencies],
       }
-      if $::facts['puppetversion'] < '4' {
-        rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized":
-          ensure => $oxidized::ensure,
-        }
-        rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized-script":
-          ensure => $oxidized::ensure,
-        }
-        rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized-web":
-          ensure => $oxidized::ensure,
-        }
+
+      rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized":
+        ensure => $oxidized::ensure,
+      }
+      rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized-script":
+        ensure => $oxidized::ensure,
+      }
+      rvm_gem { "ruby-${oxidized::rvm_ruby_version}/oxidized-web":
+        ensure => $oxidized::ensure,
       }
 
       rvm_wrapper { 'oxidized':
