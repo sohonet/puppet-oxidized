@@ -8,7 +8,7 @@ class oxidized::install inherits oxidized  {
 
     package { $oxidized::params::dependencies:
       ensure  => $oxidized::ensure,
-    }
+    } ->
 
     package { $oxidized::params::gem_names:
       ensure   => $oxidized::ensure,
