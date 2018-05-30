@@ -5,8 +5,8 @@
 class oxidized::config inherits oxidized {
 
   $config_dir   = $oxidized::config_dir
-  $config_file  = "${config_dir}/config"
-  $routerdb     = "${config_dir}/router.db"
+  $config_file  = "${config_dir}/.config/config"
+  $routerdb     = "${config_dir}/.config/router.db"
   $devices      = $oxidized::devices
   $options      = $oxidized::main::merged_options
   $base_options = $oxidized::main_options
@@ -19,14 +19,6 @@ class oxidized::config inherits oxidized {
       mode   => '0640',
     }
 
-    file { $routerdb:
-      ensure  => file,
-      owner   => $oxidized::user,
-      group   => $oxidized::group,
-      mode    => '0440',
-      content => template("${module_name}/routerdb.erb"),
-      require => File[$config_dir],
-    }
     group { $oxidized::group:
       ensure => present,
       system => true,
