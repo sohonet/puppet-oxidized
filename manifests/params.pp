@@ -65,7 +65,6 @@ class oxidized::params {
     threads    => 30,
     timeout    => 20,
     retries    => 3,
-    prompt     => '!ruby/regexp /^([\w.@-]+[#>]\s?)$/',
     vars       => {},
     groups     => {},
     model_map  => {},
