@@ -25,7 +25,7 @@ class oxidized::config inherits oxidized {
     }
     user { $oxidized::user:
       ensure     => present,
-      shell      => '/bin/false',
+      shell      => '/bin/bash',
       gid        => $oxidized::group,
       home       => $config_dir,
       managehome => false,
