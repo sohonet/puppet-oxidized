@@ -17,7 +17,6 @@ class oxidized::service inherits oxidized {
             mode   => '0644',
             source => "puppet:///modules/${module_name}/${module_name}.service",
           }
-          ~> Exec['systemctl-daemon-reload']
         }
         'upstart': {
           file { "/etc/init.d/${$oxidized::service_name}":
