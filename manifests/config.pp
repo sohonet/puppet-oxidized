@@ -5,8 +5,8 @@
 class oxidized::config inherits oxidized {
 
   $config_dir   = $oxidized::config_dir
-  $config_file  = "${config_dir}/.config/oxidized/config"
-  $routerdb     = "${config_dir}/.config/oxidized/router.db"
+  $config_file  = "${config_dir}/config"
+  $routerdb     = "${config_dir}/router.db"
   $devices      = $oxidized::devices
   $options      = $oxidized::main::merged_options
   $base_options = $oxidized::main_options
