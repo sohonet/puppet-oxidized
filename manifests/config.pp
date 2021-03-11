@@ -5,7 +5,7 @@
 class oxidized::config inherits oxidized {
 
   $config_dir   = $oxidized::config_dir
-  $config_file  = "${config_dir}/config"
+  $config_file  = "/etc/oxidized/config"
   $routerdb     = "${config_dir}/router.db"
   $devices      = $oxidized::devices
   $options      = $oxidized::main::merged_options
@@ -13,6 +13,13 @@ class oxidized::config inherits oxidized {
 
   if $oxidized::ensure =~ /(present|installed|latest)/ {
     file { $config_dir:
+      ensure => directory,
+      owner  => $oxidized::user,
+      group  => $oxidized::group,
+      mode   => '0640',
+    }
+
+    file { '/etc/oxidized':
       ensure => directory,
       owner  => $oxidized::user,
       group  => $oxidized::group,
@@ -33,11 +40,12 @@ class oxidized::config inherits oxidized {
     }
 
     concat { $config_file:
-      ensure => present,
-      owner  => $oxidized::user,
-      group  => $oxidized::group,
-      mode   => '0440',
-      notify => Service[$oxidized::service_name],
+      ensure  => present,
+      owner   => $oxidized::user,
+      group   => $oxidized::group,
+      mode    => '0440',
+      notify  => Service[$oxidized::service_name],
+      require => File['/etc/oxidized'],
     }
     Concat::Fragment {
       target => $config_file,
