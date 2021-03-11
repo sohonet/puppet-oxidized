@@ -16,14 +16,14 @@ class oxidized::config inherits oxidized {
       ensure => directory,
       owner  => $oxidized::user,
       group  => $oxidized::group,
-      mode   => '0640',
+      mode   => '0655',
     }
 
     file { '/etc/oxidized':
       ensure => directory,
       owner  => $oxidized::user,
       group  => $oxidized::group,
-      mode   => '0640',
+      mode   => '0655',
     }
 
     group { $oxidized::group:
